@@ -1,0 +1,43 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 96%;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-nav__link {
+  margin-top: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #555;
+}
+.footer-nav__link.active {
+  color: #389de0;
+}
+
+.soc-networks {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.icons a {
+  margin-left: 10px;
+}
+
+.icons a:first-child {
+  margin: 0;
+
+}
+
+
+.icons-img {
+  max-width: 35px;
+}

@@ -1,0 +1,19 @@
+.logo {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  font-family: 'Merriweather', serif;
+  font-size: 30px;  
+  font-weight: bolder;
+}
+
+.logo span {
+  background: -webkit-linear-gradient(#085FE0,#6EEFD9 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.logo__img {
+  max-width: 55px;
+}
