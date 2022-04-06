@@ -1,0 +1,42 @@
+
+.home__link {
+  padding: 5px 10px;
+  color: white;
+  background-color: #00c4ff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+
+.home__form {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid gainsboro;
+  border-top: 1px solid gainsboro;
+  padding: 5rem 0;
+}
+
+.home__form-inp {
+  padding: 0 60px 0 9px;
+  outline: none;
+  border: 1px solid #2180e0;
+  border-radius: 5px;
+}
+
+.home__form-btn {
+  padding: 3px 17px;
+  margin-left: 27px;
+  border: 1px solid;
+  border-radius: 5px;
+  background: #2180e0;
+  color: #ffffff;
+  font-weight: 600;
+  transition: .5s;
+}
+
+.home__form-btn:hover {
+  background:#ffffff;
+  color: #2180e0;
+}

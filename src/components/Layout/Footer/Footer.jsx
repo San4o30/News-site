@@ -29,7 +29,9 @@ function Footer() {
 
       <div className="contacts">
         <h3>Контактная информация</h3>
-        <p></p>
+        <a href='#'>Телефон +996 (312) 66-01-88</a>
+        <a href='#'>Рекламный отдел +996 (312) 68-08-51</a>
+        <a href="#">Почта info@iblog.kg</a>
       </div>
     </div>
   )

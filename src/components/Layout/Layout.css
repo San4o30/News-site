@@ -6,7 +6,5 @@ body, html {
 }
 
 .main-wrapper {
-  position: relative;
-  max-width: 1400px;
-  
+  position: relative;  
 }

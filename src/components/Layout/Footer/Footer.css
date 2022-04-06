@@ -1,10 +1,10 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
-  position: absolute;
+  padding: 1rem 0 1rem 1rem;
   bottom: 0;
-  width: 96%;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .footer-nav {
@@ -28,6 +28,10 @@
   flex-direction: column;
 }
 
+.icons {
+  margin-top: 15px;
+}
+
 .icons a {
   margin-left: 10px;
 }
@@ -40,4 +44,14 @@
 
 .icons-img {
   max-width: 35px;
+}
+
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts a {
+  text-decoration: none;
 }
