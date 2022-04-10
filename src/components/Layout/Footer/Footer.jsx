@@ -1,10 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './Footer.css'
-import insta from './icons/instagram.png'
-import fb from './icons/facebook.png'
-import twitter from './icons/twitter.png'
-import vk from './icons/vk.png'
+import { FaInstagram, FaTwitter,FaFacebookF, FaGithub } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -19,11 +16,29 @@ function Footer() {
 
       <div className="soc-networks">
         <h3>Социальные сети</h3>
-        <div className='icons'>
+        {/* <div className='icons'>
             <a href='http://facebook.com'><img className='icons-img' src={fb} alt="" /></a>
             <a href='http://twitter.com'><img className='icons-img' src={twitter} alt="" /></a>
             <a href='http://vk.com'><img className='icons-img' src={vk} alt="" /></a>
             <a href='http://instagram.com'><img className='icons-img' src={insta} alt="" /></a>
+        </div> */}
+        <div className="wrapper">
+          <li className="icon facebook">
+            <span className="tooltip">Facebook</span>
+            <span><FaFacebookF/></span>
+          </li>
+          <li className="icon twitter">
+            <span className="tooltip">Twitter</span>
+            <span><FaTwitter/></span>
+          </li>
+          <li className="icon instagram">
+            <span className="tooltip">Instagram</span>
+            <span><FaInstagram/></span>
+          </li>
+          <li className="icon github">
+            <span className="tooltip">Github</span>
+            <span><FaGithub/></span>
+          </li>
         </div>
       </div>
 

@@ -1,0 +1,19 @@
+.news-item {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 3rem;
+}
+
+.news-item img {
+  height: 250px;
+  width: 400px;
+}
+
+.news-item-caption {
+  position: relative;
+  width: 450px;
+}
