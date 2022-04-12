@@ -1,5 +1,9 @@
+
+
 .news__form-group {
   display: flex;
   flex-direction: column;
-  
+  width: 530px;
 }
+
+

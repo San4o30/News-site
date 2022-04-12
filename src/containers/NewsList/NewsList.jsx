@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import './NewsList.css'
 import Pagination from '../../components/Pagination/Pagination'
@@ -16,6 +16,7 @@ function NewsList() {
   const currentNews = news.slice(firstNewsIndex, lastNewsIndex)
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const nav = useNavigate()
 
 
   return (
@@ -23,18 +24,18 @@ function NewsList() {
       <h2>Список новостей</h2>
       <div>
         {
-          currentNews.map(news_item => {
-            return <div key={news_item.id} className='news-item'>
-              <img src={`http://localhost:1337${news_item.attributes.image.data.attributes.url}`} alt="" />
+          currentNews.map(newsItem => {
+            return <div key={newsItem.id} className='news-item'>
+              <img src={`http://localhost:1337${newsItem.attributes.image.data.attributes.url}`} alt="" />
               <div className='news-item-caption'>
-                <h4 className=''>{news_item.attributes.name}</h4>
-                <p>{news_item.attributes.desc}</p>
+                <h4 className=''>{newsItem.attributes.name}</h4>
+                <p>{newsItem.attributes.shortDesc}</p>
                 <div className='news-footer'>
                   <div className='news-date'>
                     <span style={{ margin: '-2px 5px 0 0' }}><BsFillCalendarDateFill /></span>
-                    <p>{news_item.attributes.date}</p>
+                    <p>{newsItem.attributes.date}</p>
                   </div>
-                  <NavLink className='news__link' to='/news-item'>Подробнее</NavLink>
+                  <button className='news__link' onClick={() => nav('news-item', {state: newsItem})}>Подробнее</button>
                 </div>
               </div>
             </div>
