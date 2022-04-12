@@ -1,3 +1,10 @@
+
+
+.news-main {
+  display: flex;
+  align-items: baseline;
+}
+
 .news-header {
   position: relative;
 }
@@ -33,4 +40,18 @@
   margin: 30px 0 50px 60px;
   font-size: 20px;
   max-width: 750px;
+}
+
+
+.news__links {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.news-change,
+.news-delete {
+  border: none;
+  background: transparent;
+  margin-bottom: 10px;
 }

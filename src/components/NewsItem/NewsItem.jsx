@@ -2,13 +2,15 @@ import React, { useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import './NewsItem.css'
+import edit from './editing.png'
+import del from './delete.png'
+
 function NewsItem() {
 
   const location = useLocation()
   const nav = useNavigate()
 
   useEffect(() => {
-    console.log(location.state);
     if(!location.state) {
       nav('/')
     }
@@ -24,8 +26,9 @@ function NewsItem() {
       </div>
       <div className="news-main">
         <p className='news-text'>{location.state.attributes.fullDesc}</p>
-        <div className="">
-        <button className='' onClick={() => nav('/news/change-news', {state: location.state})}>Редактировать</button>
+        <div className="news__links">
+        <button  className='news-change' onClick={() => nav('/news/change-news', {state: location.state})}> <img src={edit} alt="" width='30' /> Редактировать пост</button>
+        <button  className='news-delete' > <img src={del} alt="" width='30' /> Удалить пост</button>
         </div>
       </div>
     </div>
