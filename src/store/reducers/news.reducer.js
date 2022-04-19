@@ -24,6 +24,26 @@ export const postNews = createAsyncThunk(
   }
 )
 
+export const putNews = createAsyncThunk(
+  "news/put",
+  async (data, {rejectWithValue, getState}) => {
+    try {
+      console.log(data);
+      const token = getState().auth.user.token;
+      const res = await axios.put(`/news/${data.id}`, {data: {...data.news}} ,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if(!res.data) {
+        throw new Error()
+      }
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  }
+)
 
 export const getNews = asyncThunk(
   "news/get",
@@ -31,11 +51,44 @@ export const getNews = asyncThunk(
   "/news?populate=image"
 );
 
+export const getNewsInfo = createAsyncThunk(
+  'news-item/get',
+  async (id, {rejectWithValue}) => {
+    try {
+      const res = await axios.get(`/news/${id}?populate=image`)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  }
+)
+
+export const deleteNews = createAsyncThunk(
+  'news/delete',
+  async(id,{rejectWithValue, getState}) => {
+    try {
+      const token = getState().auth.user.token;
+      const res = await axios.delete(`/news/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if(!res.data) {
+        throw new Error()
+      }
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  }
+)
+
+
 const newsSlice = createSlice({
   name: "news",
   initialState: {
     data: [],
     loading: "",
+    dataItem: null,
   },
   extraReducers: {
     [postNews.pending]: (state) => {
@@ -47,6 +100,7 @@ const newsSlice = createSlice({
     [postNews.rejected]: (state) => {
       state.loading = "error";
     },
+
     [getNews.pending]: (state) => {
       state.loading = "loading";
     },
@@ -57,7 +111,42 @@ const newsSlice = createSlice({
     [getNews.rejected]: (state) => {
       state.loading = "error";
     },
+
+    [getNewsInfo.pending]: (state) => {
+      state.loading = "loading";
+    },
+    [getNewsInfo.fulfilled]: (state, action) => {
+      state.loading = "complete";
+      state.dataItem = action.payload.data;
+    },
+    [getNewsInfo.rejected]: (state) => {
+      state.loading = "error";
+    },
+
+    [putNews.pending]: (state) => {
+      state.loading = "loading";
+    },
+    [putNews.fulfilled]: (state,action) => {
+      state.loading = "complete";
+      state.dataItem = action.payload
+    },
+    [putNews.rejected]: (state) => {
+      state.loading = "error";
+    },
+
+    [deleteNews.pending]: (state) => {
+      state.loading = "loading";
+    },
+    [deleteNews.fulfilled]: (state,action) => {
+      state.loading = "complete";
+    },
+    [deleteNews.rejected]: (state) => {
+      state.loading = "error";
+    },
   },
 });
 
 export default newsSlice.reducer;
+
+
+

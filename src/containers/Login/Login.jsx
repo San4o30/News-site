@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { fetchUser } from "../../store/reducers/auth.reducer";
 
-import styles from "./Login.module.css";
+import "./Login.css";
 
 function Login() {
   const [user, setUser] = useState({
     identifier: '',
     password: ''
   });
+
+  const auth = useSelector(store => store.auth.user);
+
 
   const dispatch = useDispatch()
 
@@ -26,30 +30,30 @@ function Login() {
     dispatch(fetchUser(user));
   }
 
+  if (auth) {
+    return <Navigate to='/' />
+  }
   return (
-    <div className={styles.auth}>
+    <div className="login">
+      <h2>Login</h2>
       <form onSubmit={submitHandler}>
-        <div className={styles.group}>
-          <input
-            className={styles.input}
-            type="text"
-            name="identifier"
-            placeholder="Enter email"
-            onChange={changeHandler}
-          />
+        <div className="input-group">
+          <input 
+            type="text" 
+            name="identifier" 
+            onChange={changeHandler} 
+            required="Username"/>
+            <label>Username</label>
         </div>
-        <div className={styles.group}>
-          <input
-            className={styles.input}
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            onChange={changeHandler}
-          />
+        <div className="input-group">
+          <input 
+            type="password" 
+            name="password" 
+            onChange={changeHandler} 
+            required="password"/>
+            <label>Password</label>
         </div>
-        <div className={styles.group}>
-          <button>Login</button>
-        </div>
+        <input className="password-inp" type="submit" value="Login"/>
       </form>
     </div>
   );

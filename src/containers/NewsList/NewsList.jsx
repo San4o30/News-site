@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import {useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import './NewsList.css'
 import Pagination from '../../components/Pagination/Pagination'
+import { getNews } from '../../store/reducers/news.reducer'
+import { motion, AnimatePresence } from "framer-motion";
+
 
 function NewsList() {
   const news = useSelector(store => store.news.data)
-
   const [currentPage, setCurrentPage] = useState(1)
   const [newsPerPage] = useState(3)
 
@@ -16,29 +18,38 @@ function NewsList() {
   const currentNews = news.slice(firstNewsIndex, lastNewsIndex)
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
-  const nav = useNavigate()
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getNews());
+  }, [dispatch]);
 
   return (
     <div className='news-wrapper'>
-      <h2>Список новостей</h2>
+      <h2 className='title'>Список новостей</h2>
       <div>
         {
-          currentNews.map(newsItem => {
-            return <div key={newsItem.id} className='news-item'>
-              <img src={`http://localhost:1337${newsItem.attributes.image.data.attributes.url}`} alt="" />
+          currentNews.map((newsItem) => {
+            return <motion.div
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: "100vh" }}
+              className='news-item'
+              key={newsItem.id}
+              >
+              <img src={`http://localhost:1337${newsItem.image.url}`} alt="" />
               <div className='news-item-caption'>
-                <h4 className=''>{newsItem.attributes.name}</h4>
-                <p>{newsItem.attributes.shortDesc}</p>
-                <div className='news-footer'>
+                <h4 className=''>{newsItem.name}</h4>
+                <p>{newsItem.shortDesc}</p>
+                <div className='news_footer'>
                   <div className='news-date'>
                     <span style={{ margin: '-2px 5px 0 0' }}><BsFillCalendarDateFill /></span>
-                    <p>{newsItem.attributes.date}</p>
+                    <p>{newsItem.date}</p>
                   </div>
-                  <button className='news__link' onClick={() => nav('news-item', {state: newsItem})}>Подробнее</button>
+                  <Link className='news__link' to={`/news/news-item/${newsItem.id}`}>Подробнее</Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           })
         }
         <Pagination

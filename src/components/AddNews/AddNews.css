@@ -32,3 +32,9 @@
 .news__img-select {
   margin-top: 50px;
 }
+
+.add-btn {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 7px;
+}

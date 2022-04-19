@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fit ,minmax(300px ,1fr));
   gap: 3rem;
   padding: 2rem;
+  font-family: 'Merriweather';
 }
 
 .news__item {
@@ -13,10 +14,13 @@
   box-shadow: 0px 0px 4px 0px gainsboro;
   border-radius: 5px;
   position: relative;
+  height: 500px;
 }
 
 .news__item-caption{
   padding: 1rem 1rem 2rem 1rem;
+  height: 235px;
+  overflow: hidden;
 }
 .news__item img {
   height: 215px;
@@ -31,6 +35,7 @@
   border-radius: 5px;
   font-weight: 500;
   transition: .5s;
+  text-decoration: none;
 }
 
 .news__link:hover {
@@ -42,17 +47,19 @@
 .news-date {
   display: flex;
   justify-content: space-between;
-  color: #614eff;
+  align-items: center;
+  color: mediumpurple;
   font-weight: 500;
 }
 
 .news-footer {
   display: flex;
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   width: 90%;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
+
 
 

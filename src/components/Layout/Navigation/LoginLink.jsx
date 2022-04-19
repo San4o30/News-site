@@ -1,20 +1,43 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Navigate, NavLink } from 'react-router-dom'
 import './Navigation.css'
 import login from './login.png'
-import { useSelector } from 'react-redux';
+import avatar from '../../../assets/avatar.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../store/reducers/auth.reducer'
 function LoginLink() {
+
   const user = useSelector(store => store.auth.user);
-  return (
-      <div className="sec-center">
-        <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
-        <label className="for-dropdown" for="dropdown"><img style={{ maxWidth: '35px', marginRight: '5px' }} src={login} alt="" /><span>Login</span></label>
-        <div className="section-dropdown">
-        <NavLink className="toolbar-nav__link" to="/login">Login</NavLink>
-        {user && <NavLink className="toolbar-nav__link" to="/news-form">Добавить новость</NavLink>}
+  const dispatch = useDispatch()
+  const Logout = () => {
+    window.confirm('Вы точно хотите выйти?')
+    if(true) {
+      dispatch(logout())
+    } else {
+      return <Navigate to='/'/>
+    }
+  }
+
+  const [DDState, setDDState] = useState(false)
+  if (!user) {
+    return (
+      <div>   
+        <img style={{ maxWidth: '35px' }} src={login} alt="" />
+        <NavLink className="toolbar-nav__link" style={{ margin: '10px' }} to="/login">Login</NavLink>
+      </div>
+    )
+  } else {
+    return (
+      <div className='DDWrap' onClick={() => setDDState(!DDState)}>
+        <img style={{ borderRadius: '50%', marginRight: '77px' }} width='50' src={avatar} alt="" />
+        <div className={`ddAuth ${DDState ? 'active' : ''}`}>
+          <NavLink className="toolbar-nav__link" to="/news-form">Добавить новость</NavLink>
+          <button className="toolbar-nav__link" onClick={Logout}>Выйти</button>
         </div>
       </div>
-  )
+    )
+  }
+
 }
 
 export default LoginLink

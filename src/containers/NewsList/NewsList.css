@@ -3,17 +3,29 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  border: 1px solid darkgray;
-  border-radius: 5px;
   padding: 3rem;
+  font-family: 'Merriweather';
 }
 
 .news-item img {
-  height: 250px;
-  width: 400px;
+	height: 250px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 31px 7px gainsboro;
 }
 
 .news-item-caption {
   position: relative;
   width: 450px;
 }
+
+.news_footer {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+

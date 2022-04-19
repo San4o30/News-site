@@ -26,18 +26,22 @@
   border-radius: 5px;
 }
 
+
+
+
 .home__form-btn {
-  padding: 3px 17px;
   margin-left: 27px;
-  border: 1px solid;
-  border-radius: 5px;
-  background: #2180e0;
+  background-color: #2180e0;
   color: #ffffff;
-  font-weight: 600;
-  transition: .5s;
+  border: none;
+  padding: 0.5em 1.25em;
+  border-radius: 0.5em;
 }
 
-.home__form-btn:hover {
-  background:#ffffff;
-  color: #2180e0;
+.home__form-btn:active {
+  transform: scale(1.01);
 }
+
+
+
+
