@@ -5,13 +5,13 @@ function Contacts() {
     <div className="contacts-wrapper">
       <div className="contacts-block">
         <p>По вопросам сотрудничества обращайтесь
-          в рекламную службу ИА «iblog.kg».
+          в рекламную службу ИА «new-s.kg».
           Мы публикуем новости компаний, пишем статьи разных форматов, проводим пресс-конференции и размещаем баннеры.
         </p>
         <p><strong>Телефоны:</strong> +996 (312) 66-01-88  <br />
           (+996 555) 272 112 (Telegram, WhatsApp)
           <br />
-          <strong>E-mail:</strong>  info@iblog.kg
+          <strong>E-mail:</strong>  info@new-s.kg
           <br />
           Кыргызстан, Бишкек, улица Шопокова, 121/1</p>
       </div>

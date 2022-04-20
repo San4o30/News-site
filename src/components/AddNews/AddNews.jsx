@@ -2,17 +2,19 @@ import axios from '../../api/axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getNewsInfo, postNews, putNews } from '../../store/reducers/news.reducer';
-
+import { FaDownload } from 'react-icons/fa'
 import './AddNews.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 function AddNews({ edit = false }) {
-  const newsItem  = useSelector(store => store.news.dataItem)
+  const newsItem = useSelector(store => store.news.dataItem)
   const [news, setNews] = useState(newsItem || {
     name: "",
     shortDesc: "",
     fullDesc: "",
-    date: ""
+    date: "",
   });
+
+  const [file, setFile] = useState(null);
 
 
   const { id } = useParams()
@@ -23,7 +25,6 @@ function AddNews({ edit = false }) {
     }
   }, [id])
 
-  const [file, setFile] = useState(null);
 
   const changeHandler = e => {
     let value = e.target.value;
@@ -42,13 +43,13 @@ function AddNews({ edit = false }) {
   const user = useSelector(store => store.auth.user);
 
   const dispatch = useDispatch();
-
+  const nav = useNavigate()
 
   const submitHandler = e => {
     e.preventDefault();
 
     if (edit) {
-      dispatch(putNews(news,id));
+      dispatch(putNews({ news, id })).then(() => nav('/news'));
     } else {
       const formData = new FormData();
       formData.append('files', file);
@@ -75,8 +76,8 @@ function AddNews({ edit = false }) {
   }
   return (
     <div className="">
-      {edit?
-        <h2>Редактировать новость</h2>:
+      {edit ?
+        <h2>Редактировать новость</h2> :
         <h2>Добавить новость</h2>
       }
       <form onSubmit={submitHandler} className="news__form">
@@ -124,14 +125,18 @@ function AddNews({ edit = false }) {
           </div>
         </div>
         {!edit &&
-          <div className='news__img-select'>
-            <input type="file" name="file" onChange={onFileSelect} />
+          <div className="input__wrapper">
+            <input name="file" type="file" onChange={onFileSelect} id="input__file" className="input input__file" />
+            <label htmlFor="input__file" className="input__file-button">
+              <span className="input__file-icon-wrapper"><FaDownload/></span>
+              <span className="input__file-button-text">Выберите файл</span>
+            </label>
           </div>
         }
 
         <div className=''>
           {edit ?
-            <button className='add-btn'>Редактировать новость</button>:
+            <button className='change-btn add-btn'>Редактировать новость</button> :
             <button className='add-btn'>Добавить новость</button>
           }
         </div>

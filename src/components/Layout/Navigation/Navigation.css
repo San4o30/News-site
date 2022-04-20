@@ -8,56 +8,37 @@
   border: none;
   background: none;
 }
-/* 
-
-.toolbar-nav__link.active {
-  --spacing: 4px;
-  --stroke: var(--line-active);
-  --stroke-delay: 0.1s;
-  --offset: 180px;
+.nav_link {
+  color: #1787d7;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  transition: .5s;
 }
 
-:root {
-  --text: #2b3044;
-  --line: #bbc1e1;
-  --line-active: #0C6EDB;
+.nav_link:hover {
+  background-color: gainsboro;
+}
+.logout-btn {
+  margin: 0 auto;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  color: rgb(173, 13, 13);
 }
 
-a {
-  position: relative;
-  margin: 0 var(--spacing, 0px);
-  transition: margin 0.25s;
+.logout-btn:focus,
+.logout-btn:hover {
+  background: red;
+  color: white;
 }
-
-.toolbar-nav__link svg {
-  height: 45px;
-  position: absolute;
-  left: 50%;
-  bottom: 0px;
-  transform: translate(-50%, 7px) translateZ(0);
-  fill: none;
-  stroke: var(--stroke, var(--line));
-  stroke-linecap: round;
-  stroke-width: 2px;
-  stroke-dasharray: var(--offset, 69px) 278px;
-  stroke-dashoffset: 361px;
-  transition: stroke 0.25s ease var(--stroke-delay, 0s), stroke-dasharray 0.35s;
-}
-
-a:hover {
-  --spacing: 4px;
-  --stroke: var(--line-active);
-  --stroke-delay: 0.1s;
-  --offset: 180px;
-} */
-
-
 .DDWrap{
   position: relative;
-  cursor: pointer;
 }
 
 .ddAuth{
+  text-align: center;
+  width: 206px;
   position: absolute;
   background: #000;
   color: #fff;
@@ -66,9 +47,11 @@ a:hover {
   transition: all 200ms linear;
   z-index: 2;
   border-radius: 6px;
-  right: 23px;
+  right: 7px;
   opacity: 0;
   visibility: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .ddAuth::after {
@@ -87,8 +70,7 @@ a:hover {
 }
 
 .ddAuth.active{
-  bottom: -125px;
-
+  bottom: -132px;
   opacity: 1;
   visibility: visible;
 }

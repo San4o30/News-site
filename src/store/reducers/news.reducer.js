@@ -26,11 +26,10 @@ export const postNews = createAsyncThunk(
 
 export const putNews = createAsyncThunk(
   "news/put",
-  async (data, {rejectWithValue, getState}) => {
+  async ({news, id}, {rejectWithValue, getState}) => {
     try {
-      console.log(data);
       const token = getState().auth.user.token;
-      const res = await axios.put(`/news/${data.id}`, {data: {...data.news}} ,{
+      const res = await axios.put(`/news/${id}`, {data: {...news}} ,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,14 +47,14 @@ export const putNews = createAsyncThunk(
 export const getNews = asyncThunk(
   "news/get",
   "get",
-  "/news?populate=image"
+  "/news?populate=image,author"
 );
 
 export const getNewsInfo = createAsyncThunk(
   'news-item/get',
   async (id, {rejectWithValue}) => {
     try {
-      const res = await axios.get(`/news/${id}?populate=image`)
+      const res = await axios.get(`/news/${id}?populate[author][populate]=image&populate=image`)
       return res.data
     } catch (error) {
       return rejectWithValue(error)
@@ -94,8 +93,9 @@ const newsSlice = createSlice({
     [postNews.pending]: (state) => {
       state.loading = "loading";
     },
-    [postNews.fulfilled]: (state) => {
+    [postNews.fulfilled]: (state,action) => {
       state.loading = "complete";
+      state.data.push(action.payload.data)
     },
     [postNews.rejected]: (state) => {
       state.loading = "error";
@@ -128,19 +128,9 @@ const newsSlice = createSlice({
     },
     [putNews.fulfilled]: (state,action) => {
       state.loading = "complete";
-      state.dataItem = action.payload
+      state.dataItem = action.payload;
     },
     [putNews.rejected]: (state) => {
-      state.loading = "error";
-    },
-
-    [deleteNews.pending]: (state) => {
-      state.loading = "loading";
-    },
-    [deleteNews.fulfilled]: (state,action) => {
-      state.loading = "complete";
-    },
-    [deleteNews.rejected]: (state) => {
       state.loading = "error";
     },
   },

@@ -10,6 +10,9 @@ import AddNews from './components/AddNews/AddNews';
 import NewsItem from './components/NewsItem/NewsItem';
 import Login from './containers/Login/Login';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import AboutUs from './containers/AboutUs/AboutUs';
+import Profile from './components/Profile/Profile';
+import EditProfile from './components/EditProfile/EditProfile';
 
 function App() {
 
@@ -28,12 +31,15 @@ function App() {
           }
         />
         <Route path='/' element={<Home />} />
-        <Route path='/news' element={<NewsList />} />
-        <Route path='/news/news-item/:id' element={<NewsItem />} />
-        <Route path='/news/change-news/:id' element={<AddNews edit />} />
+        <Route path='/news' element={<NewsList/>} />
+        <Route path='/about-us' element={<AboutUs/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<Profile/>} />
+        <Route path='/profile/profile-edit' element={<EditProfile/>} />
         <Route path='/contacts' element={<Contacts />} />
         <Route path='/news-form' element={<AddNews />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/news/news-item/:id' element={<NewsItem />} />
+        <Route path='/news/change-news/:id' element={<AddNews edit />} />
       </Routes>
     </Layout>
   );

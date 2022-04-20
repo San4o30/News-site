@@ -29,10 +29,11 @@ function LoginLink() {
   } else {
     return (
       <div className='DDWrap' onClick={() => setDDState(!DDState)}>
-        <img style={{ borderRadius: '50%', marginRight: '77px' }} width='50' src={avatar} alt="" />
+        <img style={{ borderRadius: '50%', marginRight: '77px', cursor:'pointer' }} width='50' src={avatar} alt="" />
         <div className={`ddAuth ${DDState ? 'active' : ''}`}>
-          <NavLink className="toolbar-nav__link" to="/news-form">Добавить новость</NavLink>
-          <button className="toolbar-nav__link" onClick={Logout}>Выйти</button>
+          <NavLink className="nav_link" to="/profile">Профиль</NavLink>
+          <NavLink className="nav_link" to="/news-form">Добавить новость</NavLink>
+          <button className="nav_link logout-btn" onClick={Logout}>Выйти</button>
         </div>
       </div>
     )

@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import Slider from '../../components/Slider/Slider'
 import NewsBlocks from '../../components/NewsBlocks/NewsBlocks'
-import confetti from "https://cdn.skypack.dev/canvas-confetti@1";
 import './Home.css'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -13,12 +12,6 @@ function Home() {
     dispatch(getNews());
   }, [dispatch]);
 
-  const onClick = useCallback(() => {
-    confetti({
-      particleCount: 60,
-      spread: 30,
-    });
-  }, []);
   return (
     <div className='home__wrapper'>
       <Slider />
@@ -27,7 +20,7 @@ function Home() {
       <form className="home__form">
         <input className='home__form-inp' type="email" name="" placeholder='Введите свой email' />
         {/* <button className='home__form-btn' type='button'>Подписаться на новости</button> */}
-        <button type='button' className="home__form-btn" onClick={onClick}>
+        <button type='button' className="home__form-btn" >
           <span>🎉</span>
           <span>Подписаться на новости</span>
         </button>

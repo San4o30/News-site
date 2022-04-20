@@ -1,0 +1,51 @@
+.modal {
+  display: block;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  margin-left: -284px;
+  height: 300px;
+  max-width: 617px;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 20px;
+  z-index: 100;
+  box-shadow: 0 0 10px -6px rgba(0,0,0, .5);
+  visibility: hidden;
+  animation: modal-hide .15s forwards;
+}
+.modal.show {
+  animation: modal-show .3s;
+  visibility: visible;
+}
+
+@keyframes modal-show {
+  0% {
+    transform: scale(0.7);
+    visibility: hidden;
+  }
+  45% {
+      transform: scale(1.05);
+      visibility: visible;
+  }
+  80% {
+      transform: scale(0.95);
+      visibility: visible;
+  }
+  100% {
+      transform: scale(1);
+      visibility: visible;
+  }
+}
+@keyframes modal-hide {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+  }
+  100% {
+      transform: scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+  }
+}

@@ -1,9 +1,5 @@
-
-
 .news-main {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-around;
+  margin-left: 50px;
   font-family: 'Merriweather';
 }
 
@@ -12,7 +8,7 @@
 }
 
 .news-title {
-  position: absolute;
+  position: absolute; 
   top: 10%;
   border: 1px solid transparent;
   background: white;
@@ -27,7 +23,7 @@
   display: flex;
   color: #614eff;
   font-size: 20px;
-  font-weight: 500; 
+  font-weight: 500;
   align-items: center;
   padding: 1rem;
   bottom: 10%;
@@ -39,16 +35,14 @@
 }
 
 .news-text {
-  margin: 30px 0 ;
+  margin: 30px 0;
   font-size: 20px;
   max-width: 750px;
 }
 
 
 .news__links {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .news-delete {
@@ -57,9 +51,24 @@
 
 .news-change,
 .news-delete {
+  margin-right: 9px;
   font-weight: 500;
   border: none;
   text-decoration: none;
   background: transparent;
   margin-bottom: 10px;
+}
+
+
+
+.news-author {
+  position: absolute;
+  top: 90%;
+  right: 35px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid gainsboro;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 2px gainsboro;
 }

@@ -42,8 +42,8 @@ function Login() {
             type="text" 
             name="identifier" 
             onChange={changeHandler} 
-            required="Username"/>
-            <label>Username</label>
+            required="Email"/>
+            <label>Email</label>
         </div>
         <div className="input-group">
           <input 
