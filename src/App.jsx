@@ -13,6 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import AboutUs from './containers/AboutUs/AboutUs';
 import Profile from './components/Profile/Profile';
 import EditProfile from './components/EditProfile/EditProfile';
+import EditNews from './components/EditNews/EditNews';
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
         <Route path='/contacts' element={<Contacts />} />
         <Route path='/news-form' element={<AddNews />} />
         <Route path='/news/news-item/:id' element={<NewsItem />} />
-        <Route path='/news/change-news/:id' element={<AddNews edit />} />
+        <Route path='/news/change-news/:id' element={<EditNews/>} />
       </Routes>
     </Layout>
   );

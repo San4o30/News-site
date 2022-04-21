@@ -36,8 +36,8 @@ function NewsList() {
               exit={{ y: "100vh" }}
               className='news-item'
               key={newsItem.id}
-              >
-              <img className='news-image' src={`http://localhost:1337${newsItem.image.url}`} alt="" />
+            >
+              <img className='news-image' src={`http://localhost:1337${newsItem.image?.url}`} alt="" />
               <div className='news-item-caption'>
                 <h4 className=''>{newsItem.name}</h4>
                 <p>{newsItem.shortDesc}</p>

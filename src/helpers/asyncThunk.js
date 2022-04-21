@@ -15,7 +15,7 @@ export const asyncThunk = (name, type, urlApi) => {
     } catch (error) {
       return rejectWithValue(error)
     }
-  }
+  } 
   )
 };
   

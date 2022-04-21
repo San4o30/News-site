@@ -1,20 +1,23 @@
-import axios from '../../api/axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { postNews } from '../../store/reducers/news.reducer';
-import { FaDownload } from 'react-icons/fa'
-import './AddNews.css'
-import { useNavigate } from 'react-router-dom';
-function AddNews() {
-  const [news, setNews] = useState({
+import { useNavigate, useParams } from 'react-router-dom';
+import { getNewsInfo, putNews } from '../../store/reducers/news.reducer';
+function EditNews() {
+  const newsItem = useSelector(store => store.news.dataItem)
+  const [news, setNews] = useState(newsItem || {
     name: "",
     shortDesc: "",
     fullDesc: "",
     date: "",
   });
+  const dispatch = useDispatch();
+  const { id } = useParams()
 
-  const [file, setFile] = useState(null);
+  useEffect(() => {
+    dispatch(getNewsInfo(id))
+  }, [id])
 
+  const nav = useNavigate()
   const changeHandler = e => {
     let value = e.target.value;
     setNews(newNews => {
@@ -24,41 +27,14 @@ function AddNews() {
       };
     });
   }
-
-  const onFileSelect = e => {
-    setFile(e.target.files[0])
-  }
-
-  const user = useSelector(store => store.auth.user);
-
-  const dispatch = useDispatch();
-  const nav = useNavigate()
-
   const submitHandler = e => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('files', file);
-    axios
-      .post("/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${user.token}`
-        },
-      })
-      .then((res) => {
-        const data = {
-          data: {
-            ...news,
-            image: res.data,
-          },
-        };
-        dispatch(postNews(data)).then(() => nav('/news'));
-      }
-      )
+    dispatch(putNews({ news, id })).then(() => nav('/news'));
   }
   return (
     <div className="">
-      <h2>Добавить новость</h2>
+
+      <h2>Редактировать новость</h2>
       <form onSubmit={submitHandler} className="news__form">
         <div className='news__form-start'>
           <div className='news__form-group'>
@@ -103,20 +79,12 @@ function AddNews() {
               onChange={changeHandler} />
           </div>
         </div>
-        <div className="input__wrapper">
-          <input name="file" type="file" onChange={onFileSelect} id="input__file" className="input input__file" />
-          <label htmlFor="input__file" className="input__file-button">
-            <span className="input__file-icon-wrapper"><FaDownload /></span>
-            <span className="input__file-button-text">Выберите файл</span>
-          </label>
-        </div>
-
         <div className=''>
-          <button className='add-btn'>Добавить новость</button>
+          <button className='change-btn add-btn'>Редактировать новость</button> :
         </div>
       </form>
     </div>
   )
 }
 
-export default AddNews
+export default EditNews

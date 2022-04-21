@@ -24,10 +24,14 @@ function Login() {
       }
     })
   }
+  
 
   const submitHandler = e => {
     e.preventDefault();
     dispatch(fetchUser(user));
+    if(user.identifier !== "human@gmail.com" || user.password !== "123456") {
+      alert('Неверный email или пароль!')
+    }
   }
 
   if (auth) {
