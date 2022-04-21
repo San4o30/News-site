@@ -67,7 +67,8 @@ function AddNews({ edit = false }) {
               image: res.data,
             },
           };
-          dispatch(postNews(data));
+          dispatch(postNews(data)).then(() => nav('/news'));
+        
         }
 
         )
@@ -115,7 +116,7 @@ function AddNews({ edit = false }) {
               onChange={changeHandler} />
           </div>
           <div className='news__form-group'>
-            <label>Дата</label>
+            <label>Дата опубликования</label>
             <input
               className='news__text-field'
               type='date'

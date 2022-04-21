@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Navigation.css'
 import login from './login.png'
 import avatar from '../../../assets/avatar.png'
@@ -11,11 +11,10 @@ function LoginLink() {
   const dispatch = useDispatch()
   const Logout = () => {
     window.confirm('Вы точно хотите выйти?')
-    if(true) {
+      if(true) {
       dispatch(logout())
-    } else {
-      return <Navigate to='/'/>
-    }
+      } 
+
   }
 
   const [DDState, setDDState] = useState(false)

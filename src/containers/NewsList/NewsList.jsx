@@ -5,7 +5,7 @@ import { BsFillCalendarDateFill } from 'react-icons/bs'
 import './NewsList.css'
 import Pagination from '../../components/Pagination/Pagination'
 import { getNews } from '../../store/reducers/news.reducer'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 function NewsList() {
@@ -37,7 +37,7 @@ function NewsList() {
               className='news-item'
               key={newsItem.id}
               >
-              <img src={`http://localhost:1337${newsItem.image.url}`} alt="" />
+              <img className='news-image' src={`http://localhost:1337${newsItem.image.url}`} alt="" />
               <div className='news-item-caption'>
                 <h4 className=''>{newsItem.name}</h4>
                 <p>{newsItem.shortDesc}</p>

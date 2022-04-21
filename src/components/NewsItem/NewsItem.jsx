@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, NavLink, useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import './NewsItem.css'
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 import edit from './editing.png'
 import del from './delete.png'
+import ava from './dwayne.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteNews, getNewsInfo } from '../../store/reducers/news.reducer'
 import Modal from '../UI/Modal/Modal'
@@ -37,7 +38,7 @@ function NewsItem() {
             <img className='news-img' width='100%' src={`http://localhost:1337${news?.image.url}`} alt="" />
             <h3 className='news-title'>{news.name}</h3>
             <div className='news_date'><span style={{ margin: '0 5px 5px 0' }}><BsFillCalendarDateFill /></span><p style={{ margin: '0' }}>{news.date}</p></div>
-            {news.author &&
+            {news.author ?
             <div className="news-author">
               <img width='80' height='80' style={{ borderRadius: '50%', objectFit: 'cover' }} src={`http://localhost:1337${news?.author.image?.url}`} alt="" />
               <h4>{news.author.name}</h4>
@@ -48,7 +49,18 @@ function NewsItem() {
                 <a href="https://twitter.com" className="icon-button twitter"><i className="icon-twitter"><FaTwitter /></i><span></span></a>
                 <a href="https://instagram.com" className="icon-button instagram"><i className="icon-instagram"><FaInstagram /></i><span></span></a>
               </div>
+            </div> :
+            <div className="news-author">
+            <img width='80' height='80' style={{ borderRadius: '50%', objectFit: 'cover' }} src={ava} alt="" />
+            <h4>Стеффанбек Карриев</h4>
+            <h6>Журналист / дизайнер</h6>
+            <p>2 статьи</p>
+            <div className="soc-media">
+              <a href="https://facebook.com" className="icon-button facebook"><i className="icon-facebook"><FaFacebookF /></i><span></span></a>
+              <a href="https://twitter.com" className="icon-button twitter"><i className="icon-twitter"><FaTwitter /></i><span></span></a>
+              <a href="https://instagram.com" className="icon-button instagram"><i className="icon-instagram"><FaInstagram /></i><span></span></a>
             </div>
+          </div>
             }
           </div>
           <div className="news-main">

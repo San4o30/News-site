@@ -8,9 +8,16 @@
 }
 
 .news-item img {
-	height: 250px;
-	border-radius: 5px;
-	box-shadow: 0px 0px 31px 7px gainsboro;
+  height: 270px;
+  width: 564px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0px 0px 31px 7px gainsboro;
+  transition: all ease 1s;
+}
+
+.news-item img:hover {
+  transform: scale(1.05);
 }
 
 .news-item-caption {
@@ -24,8 +31,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-
-
-
-
